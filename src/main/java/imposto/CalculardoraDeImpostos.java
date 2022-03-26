@@ -7,6 +7,14 @@ import java.math.BigDecimal;
 public class CalculardoraDeImpostos {
 
     public BigDecimal calcular(Orcamento orcamento, TipoImposto tipoImposto){
-        return orcamento.getValor().multiply(new BigDecimal("0.1"));
+
+        switch (tipoImposto){
+            case ICMS:
+                return orcamento.getValor().multiply(tipoImposto.valorImposto());
+            case ISS:
+                return orcamento.getValor().multiply(tipoImposto.valorImposto());
+            default:
+                return BigDecimal.ZERO;
+        }
     }
 }
