@@ -1,21 +1,10 @@
 package imposto;
 
+import orcamento.Orcamento;
+
 import java.math.BigDecimal;
 
-public enum TipoImposto {
+public interface TipoImposto {
 
-    ICMS{
-        @Override
-        public BigDecimal valorImposto() {
-            return BigDecimal.valueOf(0.1);
-        }
-    },
-    ISS{
-        @Override
-        public BigDecimal valorImposto() {
-            return BigDecimal.valueOf(0.05);
-        }
-    };
-
-    public abstract BigDecimal valorImposto();
+    public BigDecimal calcular(Orcamento orcamento);
 }
