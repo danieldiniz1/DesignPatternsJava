@@ -5,11 +5,18 @@ import orcamento.Orcamento;
 
 import java.math.BigDecimal;
 
-public class ISS implements TipoImposto {
+public class ISS extends TipoImposto {
 
     private BigDecimal aliquota = BigDecimal.valueOf(0.05);
 
-    public BigDecimal calcular(Orcamento orcamento){
+    public ISS(TipoImposto outro) {
+        super(outro);
+    }
+
+    @Override
+    protected BigDecimal realizarCalculo(Orcamento orcamento) {
         return orcamento.getValor().multiply(aliquota);
     }
+
+
 }

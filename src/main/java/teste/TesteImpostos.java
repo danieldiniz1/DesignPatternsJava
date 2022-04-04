@@ -15,6 +15,6 @@ public class TesteImpostos {
         CalculardoraDeImpostos calculardoraDeImpostos = new CalculardoraDeImpostos();
 
         System.out.println("O Imposto para o orçamento de R$ " + orcamento.getValor() + "" +
-                " será de R$ " + calculardoraDeImpostos.calcular(orcamento, new ISS()));
+                " será de R$ " + calculardoraDeImpostos.calcular(orcamento, new ISS(null)));
     }
 }
