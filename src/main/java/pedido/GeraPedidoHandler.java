@@ -1,5 +1,6 @@
 package pedido;
 
+import orcamento.ItemOrcamento;
 import orcamento.Orcamento;
 import pedido.acao.AcaoAposGerarPedido;
 import pedido.acao.EnviarEmailPedido;
@@ -17,7 +18,10 @@ public class GeraPedidoHandler {
     }
 
     public void execute(GeraPedido dados){
-        Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQuantidadeItens());
+        ItemOrcamento item = new ItemOrcamento(dados.getValorOrcamento());
+        Orcamento orcamento = new Orcamento();
+        orcamento.adicionarItem(item);
+
         Pedido pedido = new Pedido(dados.getNomeCliente(), LocalDateTime.now(),orcamento);
 
         acoes.forEach((a -> a.executar(pedido)));
