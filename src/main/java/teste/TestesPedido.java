@@ -5,6 +5,7 @@ import pedido.GeraPedido;
 import pedido.GeraPedidoHandler;
 import pedido.Pedido;
 import pedido.acao.EnviarEmailPedido;
+import pedido.acao.LogDePedido;
 import pedido.acao.SalvarPedidoNoBD;
 
 import java.math.BigDecimal;
@@ -23,7 +24,7 @@ public class TestesPedido {
 
         // Gerador de pedido fica apartado e independe de onde vem os dados
         GeraPedido geradorPedido = new GeraPedido(cliente,valorOrcamento,qtdeItens);
-        GeraPedidoHandler handler = new GeraPedidoHandler(Arrays.asList(new SalvarPedidoNoBD(), new EnviarEmailPedido()));
+        GeraPedidoHandler handler = new GeraPedidoHandler(Arrays.asList(new SalvarPedidoNoBD(), new EnviarEmailPedido(), new LogDePedido()));
         handler.execute(geradorPedido);
     }
 }
